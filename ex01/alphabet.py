@@ -1,4 +1,5 @@
 from random import randint
+
 from random import choice
 a = 10 #対象文字数
 b = 2  #欠損文字数
@@ -11,7 +12,7 @@ def syutudai(a,b):
     for i in range(b):
         c.append(a_ls.pop(choice(a)))
         b_ls.append(c)
-            
+
 syutudai(a,b)
 print(a_ls)
 print(b_ls)
