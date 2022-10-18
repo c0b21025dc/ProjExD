@@ -27,7 +27,7 @@ def count_up():
     global tmr
     tmr=tmr+1
     label["text"] = tmr
-    root.after(1000,count_up)
+    root.after(100,count_up)
 
 if __name__ == "__main__":
     root = tk.Tk()
