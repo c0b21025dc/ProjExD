@@ -1,5 +1,6 @@
 import tkinter as tk
 import maze_maker as mm
+import tkinter.messagebox as tkm
 
 def key_down(event):
     global key
@@ -22,9 +23,19 @@ def main_proc():
         cx, cy = mx*100+50, my*100+50
     canv.coords("tori",cx,cy)
     root.after(100,main_proc)
+def count_up():
+    global tmr
+    tmr=tmr+1
+    label["text"] = tmr
+    root.after(1000,count_up)
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
+    label = tk.Label(root, font=("",80))
+    label.pack()
+    tmr=0
+    root.after(1000, count_up)
     canv = tk.Canvas(root,width=1500,height=900,bg="black")
     canv.pack()
     maze_lst = mm.make_maze(15,9)
