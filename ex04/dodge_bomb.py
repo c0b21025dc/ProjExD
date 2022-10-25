@@ -11,7 +11,7 @@ def check_bound(obj_rct, scr_rct):
     return yoko,tate
 def main():
     pg.display.set_caption("逃げろ!こうかとん")
-    scrn_sfc = pg.display.set_mode((1600,900)) #提出時1600、900に変更
+    scrn_sfc = pg.display.set_mode((1200,600)) #提出時1600、900に変更
     scrn_rct = scrn_sfc.get_rect()
     bg_sfc = pg.image.load("fig/pg_bg.jpg")
     bg_rct = bg_sfc.get_rect()
@@ -35,7 +35,10 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
-
+            if event.type == pg.MOUSEMOTION:
+                x, y = event.pos
+                tori_rct.centerx = x
+                tori_rct.centery = y
         key_states = pg.key.get_pressed()
         if key_states[pg.K_UP]: tori_rct.centery -= 1
         if key_states[pg.K_DOWN]: tori_rct.centery += 1
@@ -58,6 +61,7 @@ def main():
         vx *= yoko
         vy *= tate
         bomb_rct.move_ip(vx,vy)
+        print(vx,vy)
         scrn_sfc.blit(bomb_sfc, bomb_rct)
 
         if tori_rct.colliderect(bomb_rct):
