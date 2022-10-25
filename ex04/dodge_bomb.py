@@ -61,7 +61,6 @@ def main():
         vx *= yoko
         vy *= tate
         bomb_rct.move_ip(vx,vy)
-        print(vx,vy)
         scrn_sfc.blit(bomb_sfc, bomb_rct)
 
         if tori_rct.colliderect(bomb_rct):
