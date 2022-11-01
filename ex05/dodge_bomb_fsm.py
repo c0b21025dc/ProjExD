@@ -98,7 +98,6 @@ def main():
     # 練習5
     bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
 
-    
 
     clock = pg.time.Clock() # 練習1
     while True:
