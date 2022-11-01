@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 from random import randint
+import os
 
 class Screen:
     def __init__(self,title,wh,bgimg):
@@ -60,6 +61,19 @@ class Bomb:
         self.vy *= tate
         self.blit(scr) #scr.sfc.blit(self.sfc, self.rct) # 練習5
 
+
+def load_sound(file):
+    """because pygame can be be compiled without mixer."""
+    if not pg.mixer:
+        return None
+    file = os.path.join(main_dir, "data", file)
+    try:
+        sound = pg.mixer.Sound(file)
+        return sound
+    except pg.error:
+        print("Warning, unable to load, %s" % file)
+    return None
+
 def check_bound(obj_rct, scr_rct):
     """
     obj_rct：こうかとんrct，または，爆弾rct
@@ -83,6 +97,8 @@ def main():
 
     # 練習5
     bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
+
+    
 
     clock = pg.time.Clock() # 練習1
     while True:
